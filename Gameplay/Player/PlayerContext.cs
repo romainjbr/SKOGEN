@@ -10,6 +10,7 @@ namespace Skogen.Gameplay.Player
         public PlayerMovement Movement { get; set; }
         public PlayerStats Stats {get; set;}
         public PlayerReferences References { get; set;}
+        public PlayerInput Input { get; set;}
 
         private PlayerController player;
 
@@ -19,7 +20,8 @@ namespace Skogen.Gameplay.Player
 
             if (Movement == null) { Movement = new PlayerMovement(player); }
             if (Stats == null) { Stats = new PlayerStats(); }
-            if (References == null) { References = new PlayerReferences(player); }        
+            if (References == null) { References = new PlayerReferences(player); }    
+            if (Input == null) { Input = new PlayerInput(player); }        
         }
     }
 }

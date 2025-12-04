@@ -11,5 +11,10 @@ namespace Skogen.Gameplay.Player
         {
             if (context == null) { context = new PlayerContext(this); }
         }
+
+        private void Update()
+        {
+            Context?.Tick();
+        }
     }
 }
