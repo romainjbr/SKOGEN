@@ -5,6 +5,8 @@ namespace Skogen.Gameplay.Player.Data
     [System.Serializable]
     public class PlayerStats
     {
-        
+        [Header("Movement")]
+        [SerializeField] private readonly float walkSpeed = 5f;
+        public float WalkSpeed => walkSpeed;
     }
 }
