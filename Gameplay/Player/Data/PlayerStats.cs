@@ -8,5 +8,6 @@ namespace Skogen.Gameplay.Player.Data
         [Header("Movement")]
         [SerializeField] private readonly float walkSpeed = 5f;
         public float WalkSpeed => walkSpeed;
+        public Vector2 Direction { get; set; }
     }
 }
