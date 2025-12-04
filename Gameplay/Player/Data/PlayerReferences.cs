@@ -14,7 +14,7 @@ namespace Skogen.Gameplay.Player.Data
 
         private PlayerController player;
         
-        public void Initialize(PlayerController player)
+        public PlayerReferences(PlayerController player)
         {
             this.player = player;
 
