@@ -17,16 +17,22 @@ namespace Skogen.Gameplay.Player.Components
             if (player != null)
             {
                 HandleMovement();
+                HandleActions();
             }
         }
 
         private void HandleMovement()
         {
-            if (player.Movement == null) { return; }
+            if (player.Context.Movement == null) { return; }
 
             var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));  
 
-            player.Movement.Move(input);       
+            player.Context.Movement.Move(input);  
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                player.Context.Movement?.Jump();
+            }   
         }
     }
 }

@@ -12,6 +12,47 @@ namespace Skogen.Gameplay.Player.Components
             this.player = player;
         }
 
+        public bool IsGrounded()
+        {
+            var col = player.Context.References.Collider;
+            
+            if (col == null) { return false; }
+
+            var extraHeight = 0.1f;
+            var hit = Physics2D.BoxCast(
+                col.bounds.center,
+                col.bounds.size,
+                0f,
+                Vector2.down,
+                extraHeight,
+                player.Context.References.GroundLayer
+            );
+
+            return hit.collider != null;
+        }
+
+        public bool IsFalling()
+        {
+            var rb = player.Context.References.RigidBody;
+            return rb != null && rb.linearVelocity.y < 0f && !IsGrounded();
+        }
+
+        public bool IsJumping()
+        {
+            var rb = player.Context.References.RigidBody;
+            return rb != null && rb.linearVelocity.y > 0f && !IsGrounded();
+        }
+
+        // TODO: implement animation 
+        public void Jump()
+        {
+            if (!IsGrounded()|| player.Context.References.RigidBody == null)  { return; }
+
+            var rb = player.Context.References.RigidBody;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, player.Context.Stats.JumpForce);
+        }     
+
+        // TODO: implement animation 
         public void Move(Vector2 input)
         {
             if (player.Context.References.RigidBody == null) { return; }
