@@ -17,7 +17,7 @@ namespace Skogen.Gameplay.Player.Components
 
         public void Tick()
         {
-            if (player != null)
+            if (player != null && CanInput)
             {
                 HandleMovement();
             }
