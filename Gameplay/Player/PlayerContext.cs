@@ -1,5 +1,5 @@
 using Skogen.Gameplay.Player.Components;
-using Skogen.Gameplay.Player.Stats;
+using Skogen.Gameplay.Player.Data;
 using UnityEngine;
 
 namespace Skogen.Gameplay.Player
@@ -11,6 +11,7 @@ namespace Skogen.Gameplay.Player
         public PlayerStats Stats {get; set;}
         public PlayerReferences References { get; set;}
         public PlayerInput Input { get; set;}
+        public PlayerInventory Inventory { get; set; }
 
         private PlayerController player;
 
@@ -22,6 +23,7 @@ namespace Skogen.Gameplay.Player
             if (Stats == null) { Stats = new PlayerStats(); }
             if (References == null) { References = new PlayerReferences(player); }    
             if (Input == null) { Input = new PlayerInput(player); }        
+            if (Inventory == null) { Inventory = new PlayerInventory(); }  
         }
     }
 }
