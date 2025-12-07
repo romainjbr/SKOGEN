@@ -14,7 +14,7 @@ namespace Skogen.Gameplay.Player
 
         private void Update()
         {
-            Context?.Tick();
+            Context?.Input?.Tick();
         }
     }
 }
