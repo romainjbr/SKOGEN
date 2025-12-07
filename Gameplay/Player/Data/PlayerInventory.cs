@@ -16,6 +16,16 @@ namespace Skogen.Gameplay.Player.Data
         [Header("Weapons")]
         [SerializeField] private Weapon equippedWeapon = Weapon.FIST;
 
+        public Weapon EquippedWeapon
+        {
+            get => equippedWeapon;
+            set
+            {
+                if (equippedWeapon == value) { return; }
+                equippedWeapon = value;
+            }
+        }
+
         private readonly Dictionary<Weapon, bool> ownedWeapons = new Dictionary<Weapon, bool>();
 
         public Dictionary<Weapon, bool> OwnedWeapons => ownedWeapons;
@@ -23,6 +33,19 @@ namespace Skogen.Gameplay.Player.Data
         public void AddNeedle(int amount)
         {
             needleCount += amount;
+        }
+
+        public bool HasWeapon(Weapon weapon)
+        {
+            return ownedWeapons.TryGetValue(weapon, out bool hasWeapon) && hasIt;
+        }
+
+        public bool TryEquipWeapon(Weapon weapon)
+        {
+            if (!HasWeapon(weapon)) { return false; }
+
+            EquippedWeapon = weapon;
+            return true;
         }
     }
 }
