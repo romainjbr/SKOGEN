@@ -12,6 +12,25 @@ namespace Skogen.Gameplay.Player.Components
             this.player = player;
         }
 
+        public bool IsGrounded()
+        {
+            var col = player.Context.References.Collider;
+            
+            if (col == null) { return false; }
+
+            var extraHeight = 0.1f;
+            var hit = Physics2D.BoxCast(
+                col.bounds.center,
+                col.bounds.size,
+                0f,
+                Vector2.down,
+                extraHeight,
+                player.Context.References.GroundLayer
+            );
+
+            return hit.collider != null;
+        }
+
         public void Move(Vector2 input)
         {
             if (player.Context.References.RigidBody == null) { return; }
