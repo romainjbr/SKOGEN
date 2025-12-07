@@ -7,6 +7,9 @@ namespace Skogen.Gameplay.Player.Components
     {
         private PlayerController player;
 
+        private bool canInput = true;
+        public bool CanInput => canInput;
+
         public PlayerInput(PlayerController player)
         {
             this.player = player;
@@ -32,6 +35,16 @@ namespace Skogen.Gameplay.Player.Components
             {
                 player.Context.Movement?.Jump();
             }   
+        }
+
+        public void DisableInput()
+        {
+            canInput = false;
+        }
+
+        public void EnableInput()
+        {
+            canInput = true;
         }
     }
 }

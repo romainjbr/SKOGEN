@@ -24,5 +24,23 @@ namespace Skogen.Gameplay.Player.Components
 
             currentHealth += amount;
         }
+
+        public void TakeDamage(int amount)
+        {
+            if (amount <= 0)  { return; }
+
+            currentHealth -= amount;
+
+            if (currentHealth <= 0)
+            {
+                HandleDeath();
+            }
+        }
+        
+        // TODO: Call Game Over Menu
+        private void HandleDeath()
+        {
+            player?.Context?.Input?.DisableInput();
+        }
     }
 }
