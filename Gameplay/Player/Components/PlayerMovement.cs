@@ -31,6 +31,18 @@ namespace Skogen.Gameplay.Player.Components
             return hit.collider != null;
         }
 
+        public bool IsFalling()
+        {
+            var rb = player.Context.References.RigidBody;
+            return rb != null && rb.linearVelocity.y < 0f && !IsGrounded();
+        }
+
+        public bool IsJumping()
+        {
+            var rb = player.Context.References.RigidBody;
+            return rb != null && rb.linearVelocity.y > 0f && !IsGrounded();
+        }
+
         // TODO: implement animation 
         public void Jump()
         {
