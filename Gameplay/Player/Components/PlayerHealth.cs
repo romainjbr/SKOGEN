@@ -20,7 +20,7 @@ namespace Skogen.Gameplay.Player.Components
 
         public void Heal(int amount)
         {
-            if (amount <= 0 || (amout + currentHealth < maxHealth)) { return; }
+            if (amount <= 0 || (amount + currentHealth < maxHealth)) { return; }
 
             currentHealth += amount;
         }
@@ -36,7 +36,7 @@ namespace Skogen.Gameplay.Player.Components
                 HandleDeath();
             }
         }
-        
+
         // TODO: Call Game Over Menu
         private void HandleDeath()
         {
