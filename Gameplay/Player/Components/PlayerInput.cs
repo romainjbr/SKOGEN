@@ -17,7 +17,6 @@ namespace Skogen.Gameplay.Player.Components
             if (player != null)
             {
                 HandleMovement();
-                HandleActions();
             }
         }
 

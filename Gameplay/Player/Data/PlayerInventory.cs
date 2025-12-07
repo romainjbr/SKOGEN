@@ -1,4 +1,3 @@
-using Skogen.Gameplay.Items.Weapons;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
