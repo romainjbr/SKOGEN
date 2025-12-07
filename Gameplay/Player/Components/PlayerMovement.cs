@@ -31,6 +31,16 @@ namespace Skogen.Gameplay.Player.Components
             return hit.collider != null;
         }
 
+        // TODO: implement animation 
+        public void Jump()
+        {
+            if (!IsGrounded()|| player.Context.References.RigidBody == null)  { return; }
+
+            var rb = player.Context.References.RigidBody;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, player.Context.Stats.JumpForce);
+        }     
+
+        // TODO: implement animation 
         public void Move(Vector2 input)
         {
             if (player.Context.References.RigidBody == null) { return; }
