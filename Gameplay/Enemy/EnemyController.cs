@@ -15,6 +15,7 @@ namespace Skogen.Gameplay.Enemy
         private void Update()
         {
             var dt = Time.deltaTime;
+            Context?.AI?.Tick(dt);
             Context?.Combat?.Tick(dt);
         }
     }
