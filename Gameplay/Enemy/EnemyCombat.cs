@@ -27,6 +27,12 @@ namespace Skogen.Gameplay.Enemy
             this.controller = controller;
         }
 
+        public void Tick(float deltaTime)
+        {
+            timeSinceLastShot += deltaTime;
+            timeSinceLastContactDamage += deltaTime;
+        }
+        
         public void OnDamageArea(GameObject other, bool isEnter)
         {
             if (isEnter)
