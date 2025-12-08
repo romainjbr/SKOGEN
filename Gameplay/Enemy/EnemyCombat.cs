@@ -32,7 +32,7 @@ namespace Skogen.Gameplay.Enemy
             timeSinceLastShot += deltaTime;
             timeSinceLastContactDamage += deltaTime;
         }
-        
+
         public void OnDamageArea(GameObject other, bool isEnter)
         {
             if (isEnter)
@@ -88,12 +88,20 @@ namespace Skogen.Gameplay.Enemy
             projectileComp?.Move(direction * projectileSpeed);
         }
 
-        // TODO: implement Enemy AI to stop following player 
         public void CollisionEnter(string colliderName, GameObject other, bool isEnter)
         {
             if (colliderName == "DamageArea")
             {
                 OnDamageArea(other, isEnter);
+                return;
+            }
+
+           if (colliderName == "SightArea" && other.CompareTag("Player"))
+            {
+                if (isEnter)
+                {
+                    controller?.Context?.AI?.OnSightEnter(other.transform);
+                }
                 return;
             }
 
@@ -110,10 +118,12 @@ namespace Skogen.Gameplay.Enemy
             }
         }
 
-        // TODO: implement Enemy AI to stop following player 
         public void CollisionExit(string colliderName, GameObject other)
         {
-            return;
+            if (colliderName == "SightArea" && other.CompareTag("Player"))
+            {
+                controller?.Context?.AI?.OnSightExit(other.transform);
+            }
         }
     }
 }
