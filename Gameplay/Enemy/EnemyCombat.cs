@@ -1,10 +1,11 @@
+using Skogen.Core.Collision;
 using Skogen.Gameplay.Items.Weapons;
 using Skogen.Gameplay.Player;
 using UnityEngine;
 
 namespace Skogen.Gameplay.Enemy
 {
-    public class EnemyCombat : MonoBehaviour
+    public class EnemyCombat : MonoBehaviour, ICollisionHandler
     {
         [Header("Contact Damage")]
         [SerializeField] private int contactDamage = 1;
@@ -50,6 +51,12 @@ namespace Skogen.Gameplay.Enemy
             }
         }
 
+        public void OnAttackAreaEnter(GameObject other)
+        {
+            if (!other.CompareTag("Player")) { return; }
+            OnDamageArea(other, true);
+        }
+
         public void OnShootAreaEnter(Transform playerTransform)
         {
             if (timeSinceLastShot < shootCooldown) { return; }
@@ -73,6 +80,34 @@ namespace Skogen.Gameplay.Enemy
 
             var projectileComp = projectile.GetComponent<Projectile>();
             projectileComp?.Move(direction * projectileSpeed);
+        }
+
+        // TODO: implement Enemy AI to stop following player 
+        public void CollisionEnter(string colliderName, GameObject other, bool isEnter)
+        {
+            if (colliderName == "DamageArea")
+            {
+                OnDamageArea(other, isEnter);
+                return;
+            }
+
+            if (colliderName == "AttackArea" && other.CompareTag("Player") && isEnter)
+            {
+                OnAttackAreaEnter(other);
+                return;
+            }
+
+            if (colliderName == "ShootArea" && other.CompareTag("Player") && isEnter)
+            {
+                OnShootAreaEnter(other.transform);
+                return;
+            }
+        }
+
+        // TODO: implement Enemy AI to stop following player 
+        public void CollisionExit(string colliderName, GameObject other)
+        {
+            return;
         }
     }
 }
