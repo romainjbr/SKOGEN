@@ -17,5 +17,26 @@ namespace Skogen.Gameplay.Enemy
             this.controller = controller;
             currentHealth = maxHealth;
         }
+
+        public void TakeDamage(int amount)
+        {
+            if (amount <= 0 || currentHealth <= 0) { return; }
+
+            currentHealth -= amount;
+
+            if (currentHealth <= 0)
+            {
+                HandleDeath();
+            }
+        }
+
+        private void HandleDeath()
+        {
+            var col = GetComponent<Collider2D>();
+            if (col is not null)
+            {
+                col.enabled = false;
+            }
+        }
     }
 }
