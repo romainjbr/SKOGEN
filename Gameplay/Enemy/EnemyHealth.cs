@@ -1,9 +1,10 @@
+using Skogen.Core.Collision;
 using System;
 using UnityEngine;
 
 namespace Skogen.Gameplay.Enemy
 {
-    public class EnemyHealth : MonoBehaviour
+    public class EnemyHealth : MonoBehaviour, IDamageable
     {
         [Header("Health")]
         [SerializeField] private int maxHealth = 3;
