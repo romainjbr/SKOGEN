@@ -40,6 +40,20 @@ namespace Skogen.Gameplay.Player.Data
             return ownedWeapons.TryGetValue(weapon, out bool hasWeapon) && hasIt;
         }
 
+        public void UnlockWeapon(Weapon weapon)
+        {
+            if (weapon == Weapon.FIST) { return; }
+
+            if (ownedWeapons.ContainsKey(weapon))
+            {
+                if (ownedWeapons[weapon]) { return; }
+                ownedWeapons[weapon] = true;
+            }
+            else
+            {
+                ownedWeapons.Add(weapon, true);
+            }
+        }
         public bool TryEquipWeapon(Weapon weapon)
         {
             if (!HasWeapon(weapon)) { return false; }
