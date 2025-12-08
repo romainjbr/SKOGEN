@@ -37,7 +37,7 @@ namespace Skogen.Gameplay.Player.Data
 
         public bool HasWeapon(Weapon weapon)
         {
-            return ownedWeapons.TryGetValue(weapon, out bool hasWeapon) && hasIt;
+            return ownedWeapons.TryGetValue(weapon, out bool hasWeapon) && hasWeapon;
         }
 
         public void UnlockWeapon(Weapon weapon)

@@ -12,12 +12,13 @@ namespace Skogen.Gameplay.Enemy
         public int MaxHealth => maxHealth;
         public int CurrentHealth => currentHealth;
 
-
         [Header("Drop")]
         [SerializeField] private GameObject needlePrefab;
         [SerializeField] private float dropHeightOffset = 3f;
 
-        public void Initialize(EnemyController controller)
+        private EnemyController controller;
+        
+        public EnemyHealth(EnemyController controller)
         {
             this.controller = controller;
             currentHealth = maxHealth;

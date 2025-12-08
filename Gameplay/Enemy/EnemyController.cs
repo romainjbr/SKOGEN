@@ -11,5 +11,11 @@ namespace Skogen.Gameplay.Enemy
         {
             if (context == null) { context = new EnemyContext(this); }
         }
+
+        private void Update()
+        {
+            var dt = Time.deltaTime;
+            Context?.Combat?.Tick(dt);
+        }
     }
 }
