@@ -22,6 +22,14 @@ namespace Skogen.Gameplay.Player.Components
             {
                 HandleMovement();
                 HandleWeapons();
+                HandleActions();
+            }
+        }
+        private void HandleActions()
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                player?.Context?.Combat?.Attack();
             }
         }
 
