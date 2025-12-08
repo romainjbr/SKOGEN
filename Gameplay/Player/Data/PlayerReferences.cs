@@ -14,6 +14,17 @@ namespace Skogen.Gameplay.Player.Data
         public Collider2D Collider => collider;
         public LayerMask GroundLayer => groundLayer;
 
+        [Header("Weapons")]
+        [SerializeField] private GameObject[] weaponObjects;
+        
+        [Header("Throwables")]
+        [SerializeField] private Transform throwFrom;
+        [SerializeField] private GameObject throwablePrefab;
+
+        public GameObject[] WeaponObjects => weaponObjects;
+        public Transform ThrowFrom => throwFrom;
+        public GameObject ThrowablePrefab => throwablePrefab;
+        
         private PlayerController player;
         
         public PlayerReferences(PlayerController player)
