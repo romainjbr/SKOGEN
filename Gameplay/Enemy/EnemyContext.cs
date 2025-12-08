@@ -7,6 +7,7 @@ namespace Skogen.Gameplay.Enemy
     {
         public EnemyHealth Health { get; set; }
         public EnemyCombat Combat { get; set; }
+        public EnemyAI AI { get; set; }
         
         private EnemyController enemy;
 
@@ -16,6 +17,7 @@ namespace Skogen.Gameplay.Enemy
 
             if (Health == null) { Health = new EnemyHealth(enemy); }
             if (Combat == null) { Combat = new EnemyCombat(enemy); }
+            if (AI == null) { AI = new EnemyAI(enemy); }
         }
     }
 }
