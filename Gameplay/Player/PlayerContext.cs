@@ -13,6 +13,7 @@ namespace Skogen.Gameplay.Player
         public PlayerInput Input { get; set;}
         public PlayerInventory Inventory { get; set; }
         public PlayerHealth Health { get; set; }
+        public PlayerCombat Combat { get; set; }
 
         private PlayerController player;
 
@@ -26,6 +27,7 @@ namespace Skogen.Gameplay.Player
             if (Input == null) { Input = new PlayerInput(player); }        
             if (Inventory == null) { Inventory = new PlayerInventory(); }  
             if (Health == null) { Health = new PlayerHealth(player); }  
+            if (Combat == null) { Combat = new PlayerCombat(player); }  
         }
     }
 }

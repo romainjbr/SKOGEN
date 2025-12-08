@@ -20,6 +20,7 @@ namespace Skogen.Gameplay.Player.Components
             if (player != null && CanInput)
             {
                 HandleMovement();
+                HandleWeapons();
             }
         }
 
@@ -35,6 +36,38 @@ namespace Skogen.Gameplay.Player.Components
             {
                 player.Context.Movement?.Jump();
             }   
+        }
+
+        private void HandleWeapons()
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                player?.Context?.Combat?.TrySwapWeapon(Weapon.FIST);
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                player?.Context?.Combat?.TrySwapWeapon(Weapon.STICK);
+            }            
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                player?.Context?.Combat?.TrySwapWeapon(Weapon.STONE);
+            }           
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                player?.Context?.Combat?.TrySwapWeapon(Weapon.KNIFE);
+            }            
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                player?.Context?.Combat?.TrySwapWeapon(Weapon.SWORD);
+            }            
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                player?.Context?.Combat?.TrySwapWeapon(Weapon.AXE);
+            }            
+            if (Input.GetKeyDown(KeyCode.Alpha7))
+            {
+                player?.Context?.Combat?.TrySwapWeapon(Weapon.BREAD);
+            }         
         }
 
         public void DisableInput()
