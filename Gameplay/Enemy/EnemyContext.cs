@@ -6,6 +6,7 @@ namespace Skogen.Gameplay.Enemy
     public class EnemyContext
     {
         public EnemyHealth Health { get; set; }
+        public EnemyCombat Combat { get; set; }
         
         private EnemyController enemy;
 
@@ -14,6 +15,7 @@ namespace Skogen.Gameplay.Enemy
             this.enemy = enemy;
 
             if (Health == null) { Health = new EnemyHealth(enemy); }
+            if (Combat == null) { Combat = new EnemyCombat(enemy); }
         }
     }
 }
