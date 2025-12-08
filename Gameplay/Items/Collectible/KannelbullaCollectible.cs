@@ -9,6 +9,8 @@ namespace Skogen.Gameplay.Items.Collectibles
 
         public void Collect(PlayerController player)
         {
+            player?.Context?.Health?.Heal(healAmount);
+            Destroy(gameObject);
         }
     }
 }

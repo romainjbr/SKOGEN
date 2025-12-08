@@ -12,6 +12,7 @@ namespace Skogen.Gameplay.Player
         public PlayerReferences References { get; set;}
         public PlayerInput Input { get; set;}
         public PlayerInventory Inventory { get; set; }
+        public PlayerHealth Health { get; set; }
 
         private PlayerController player;
 
@@ -24,6 +25,7 @@ namespace Skogen.Gameplay.Player
             if (References == null) { References = new PlayerReferences(player); }    
             if (Input == null) { Input = new PlayerInput(player); }        
             if (Inventory == null) { Inventory = new PlayerInventory(); }  
+            if (Health == null) { Health = new PlayerHealth(player); }  
         }
     }
 }
