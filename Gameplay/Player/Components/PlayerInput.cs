@@ -1,4 +1,5 @@
 using Skogen.Gameplay.Player;
+using Skogen.Gameplay.Items.Weapons;
 using UnityEngine;
 
 namespace Skogen.Gameplay.Player.Components
