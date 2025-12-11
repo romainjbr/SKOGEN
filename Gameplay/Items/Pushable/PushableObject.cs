@@ -11,5 +11,10 @@ namespace Skogen.Gameplay.Items.Pushable
         {
             rb = GetComponent<Rigidbody2D>();
         }
+        
+        public void ApplyPush(Vector2 force)
+        {
+            rb?.AddForce(force, ForceMode2D.Impulse);
+        }
     }
 }
