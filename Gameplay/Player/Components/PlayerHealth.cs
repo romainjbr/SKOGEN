@@ -1,3 +1,4 @@
+using Skogen.UI.Menus;
 using UnityEngine;
 
 namespace Skogen.Gameplay.Player.Components
@@ -37,10 +38,10 @@ namespace Skogen.Gameplay.Player.Components
             }
         }
 
-        // TODO: Call Game Over Menu
         private void HandleDeath()
         {
             player?.Context?.Input?.DisableInput();
+            GameOverMenu.Instance.Show();
         }
     }
 }
