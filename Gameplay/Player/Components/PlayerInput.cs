@@ -44,7 +44,17 @@ namespace Skogen.Gameplay.Player.Components
             if (Input.GetButtonDown("Jump"))
             {
                 player.Context.Movement?.Jump();
-            }   
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                player.Context.Combat?.StartPush();
+            }
+
+            if (Input.GetKeyUp(KeyCode.P))
+            {
+                player.Context.Combat?.StopPush();
+            }
         }
 
         private void HandleWeapons()
